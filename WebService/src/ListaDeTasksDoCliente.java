@@ -17,31 +17,31 @@ public class ListaDeTasksDoCliente {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws ClientProtocolException, IOException {
 
-        // Instantiate an HttpClient
-        @SuppressWarnings("resource")
+		// Instantiate an HttpClient
+		@SuppressWarnings("resource")
 		HttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
-        String url = "https://webservicephp-knkshiki.rhcloud.com/tasks/?idUser=1";
-        HttpPost httppost = new HttpPost(url);
-        
-        // Instantiate a GET HTTP method
+		String url = "https://webservicephp-knkshiki.rhcloud.com/tasks/?idUser=1";
+		HttpPost httppost = new HttpPost(url);
+
+		// Instantiate a GET HTTP method
 		ResponseHandler<String> responseHandler = new BasicResponseHandler();
 		String responseBody = httpclient.execute(httppost,responseHandler);
-		
+
 		// Parse
 		JSONObject json = new JSONObject(responseBody);
 		JSONArray jArray = json.getJSONArray("tasks");
 		List<Task> mylist = new ArrayList<Task>();
 
 		for (int i = 0; i < jArray.length(); i++) {
-		    JSONObject e = jArray.getJSONObject(i);
-		    JSONObject jObject = e.getJSONObject("tasks");
-		    
-		    Task task = new Task();
-		    popularTaskComJSON(jObject, task);
+			JSONObject e = jArray.getJSONObject(i);
+			JSONObject jObject = e.getJSONObject("tasks");
 
-		    mylist.add(task);
+			Task task = new Task();
+			popularTaskComJSON(jObject, task);
+
+			mylist.add(task);
 		}
-		
+
 		System.out.println(mylist.toString());
 	}
 

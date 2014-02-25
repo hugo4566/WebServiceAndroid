@@ -13,5 +13,13 @@
 	<classpathentry kind="lib" path="lib/httpcore-ab-4.3.2.jar"/>
 	<classpathentry kind="lib" path="lib/httpcore-nio-4.3.2.jar"/>
 	<classpathentry kind="lib" path="lib/httpmime-4.3.2.jar"/>
+	<classpathentry kind="lib" path="lib/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="lib/geronimo-jaxrs_1.1_spec-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-api-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-impl-2.2.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-simple-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/stax-api-1.0-2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
