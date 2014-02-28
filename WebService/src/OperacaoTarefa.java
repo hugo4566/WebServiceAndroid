@@ -27,7 +27,7 @@ public class OperacaoTarefa {
 //		addTarefa();
 
 		// Metodo para atualizar Tarefa no servidor
-//		updateTarefa();
+		updateTarefa();
 
 		// Metodo para deletar Tarefa no servidor
 //		deleteTarefa();
@@ -82,7 +82,7 @@ public class OperacaoTarefa {
 		task.setNotificacao(1);
 
 		JSONObject json = new JSONObject();
-		json.put("objeto", "user");
+		json.put("objeto", "task");
 		json.put("operacao", "update");
 		//Parametros importantes para a operacao
 		json.put("_id", task.getId());
