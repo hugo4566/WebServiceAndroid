@@ -16,33 +16,41 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class OperacaoCliente {
+public class OperacaoTarefa {
 
 	static StringBuilder builder = new StringBuilder();
 	static String url = "https://webservicephp-knkshiki.rhcloud.com/operacao.php";
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
 
-		// Metodo para adicionar cliente no servidor
-		addCliente();
+		// Metodo para adicionar Tarefa no servidor
+//		addTarefa();
 
-		// Metodo para atualizar cliente no servidor
-//		updateCliente();
+		// Metodo para atualizar Tarefa no servidor
+//		updateTarefa();
 
-		// Metodo para deletar cliente no servidor
-//		deleteCliente();
+		// Metodo para deletar Tarefa no servidor
+//		deleteTarefa();
 	}
 
-	private static void addCliente() throws UnsupportedEncodingException, IOException, ClientProtocolException {
-		Usuario usuario = new Usuario("emailteste",12341234,"12345678");
+	private static void addTarefa() throws UnsupportedEncodingException, IOException, ClientProtocolException {
+		Task task = new Task();
+		task.setIdUsuario(2);
+		task.setNome("aniversario!");
+		task.setDescricao("aniversario de hugo");
+		task.setData("21/04/2014");
+		task.setNotificacao(1);
 
 		JSONObject json = new JSONObject();
-		json.put("objeto", "user");
+		json.put("objeto", "task");
 		json.put("operacao", "add");
 		//Parametros importantes para a operacao
-		json.put("email", usuario.getEmail());
-		json.put("telefone", usuario.getTelefone());
-		json.put("senha", usuario.getSenha());
+		json.put("_idUsuario", task.getIdUsuario());
+		json.put("nome", task.getNome());
+		json.put("descricao", task.getDescricao());
+		json.put("data", task.getData());
+		json.put("notificacao", task.getNotificacao());
+		json.put("status", 1);
 		HttpClient client = new DefaultHttpClient(new BasicHttpParams());
 
 		// Bota o JSON na url
@@ -64,18 +72,26 @@ public class OperacaoCliente {
 		System.out.println(builder.toString());
 	}
 
-	private static void updateCliente() throws UnsupportedEncodingException, IOException, ClientProtocolException {
-		Usuario usuario = new Usuario("emailteste2",12341234,"12345678");
-		usuario.setId(9);
+	private static void updateTarefa() throws UnsupportedEncodingException, IOException, ClientProtocolException {
+		Task task = new Task();
+		task.setId(5);
+		task.setIdUsuario(2);
+		task.setNome("aniversario2!");
+		task.setDescricao("aniversario de hugo");
+		task.setData("21/04/2014");
+		task.setNotificacao(1);
 
 		JSONObject json = new JSONObject();
 		json.put("objeto", "user");
 		json.put("operacao", "update");
 		//Parametros importantes para a operacao
-		json.put("_id", usuario.getId());
+		json.put("_id", task.getId());
 		// Só permite atualizar email e senha
-		json.put("email", usuario.getEmail());
-		json.put("senha", usuario.getSenha());
+		json.put("nome", task.getNome());
+		json.put("descricao", task.getDescricao());
+		json.put("data", task.getData());
+		json.put("notificacao", task.getNotificacao());
+		json.put("status", 1);
 		HttpClient client = new DefaultHttpClient(new BasicHttpParams());
 
 		// Bota o JSON na url
@@ -97,15 +113,15 @@ public class OperacaoCliente {
 		System.out.println(builder.toString());
 	}
 
-	private static void deleteCliente() throws UnsupportedEncodingException, IOException, ClientProtocolException {
-		Usuario usuario = new Usuario();
-		usuario.setId(9);
+	private static void deleteTarefa() throws UnsupportedEncodingException, IOException, ClientProtocolException {
+		Task task = new Task();
+		task.setId(4);
 
 		JSONObject json = new JSONObject();
-		json.put("objeto", "user");
+		json.put("objeto", "task");
 		json.put("operacao", "delete");
 		//Parametros importantes para a operacao
-		json.put("_id", usuario.getId());
+		json.put("_id", task.getId());
 		HttpClient client = new DefaultHttpClient(new BasicHttpParams());
 
 		// Bota o JSON na url
